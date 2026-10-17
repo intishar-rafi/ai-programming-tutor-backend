@@ -1,3 +1,4 @@
+import os
 from typing import Optional
 
 from fastapi import FastAPI
@@ -10,8 +11,8 @@ from context import build_context_block
 from hints.prompts import MAX_HINT_LEVEL, SYSTEM_PROMPT
 from hints.service import get_hint
 from llm.client import generate_chat_completion, stream_completion
-from scoping import GREETING, handle_menu
-from sessions import get_session, set_file
+from scoping import GREETING, START_MESSAGE, handle_menu
+from sessions import WORKSPACE_DIR, get_session, list_projects, set_file, start_tutoring
 
 CHAT_MAX_ATTEMPTS = 3
 
@@ -37,6 +38,32 @@ def greeting():
     """The first message the frontend shows before the student has typed
     anything — matches the notebook's initial chat_display value."""
     return {"message": GREETING}
+
+
+@app.get("/projects")
+def projects():
+    """Lets the frontend show a sidebar of existing projects to switch
+    between, instead of only reaching them through the chat menu's "1"
+    option. Read-only — doesn't touch session state."""
+    return {"projects": list_projects()}
+
+
+class SelectProjectRequest(BaseModel):
+    session_id: str
+    project: str
+
+
+@app.post("/select_project")
+def select_project(body: SelectProjectRequest):
+    """Sidebar equivalent of typing "1" then the project's number in chat
+    — jumps straight into tutoring on the chosen project. `project` must be
+    one of the names returned by GET /projects."""
+    if body.project not in list_projects():
+        return {"status": "error", "message": "No such project."}
+    state = get_session(body.session_id)
+    project_dir = os.path.join(WORKSPACE_DIR, body.project)
+    start_tutoring(state, project_dir)
+    return {"status": "ok", "message": START_MESSAGE}
 
 
 class UploadRequest(BaseModel):
