@@ -48,8 +48,8 @@ Which problem to give a hint about:
 - If you HAVE given hints already: stay on the SAME problem as your previous hints. Do not switch to another problem.
 - A function that still only contains `pass` is unfinished, not a problem. Skip it.
 - (Added in the web version, not in the notebook:) If the code has no real bug, do NOT invent one. Say that \
-this part looks correct, and use the hint to point toward the next feature in the project description that is \
-not written yet.
+this part looks correct, and use the hint to point toward the FIRST feature in the project description's Features \
+list that is not written in the code yet. In later hints, stay on that same feature.
 - (Added in the web version, not in the notebook:) Never suggest anything listed under "Out of scope" \
 in the project description.
 
