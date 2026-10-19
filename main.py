@@ -223,15 +223,6 @@ def hint(body: HintRequest):
 
     file_context = state["file_context"]
 
-    # Nothing written yet: there is no problem to hint about, and the model
-    # would invent one (e.g. a bug in a function that doesn't exist).
-    if not file_context.strip():
-        return HintResponse(
-            level=0,
-            hint="Your file is still empty. Write your first function from the Features list, "
-                 "save it, and press Hint again if you get stuck.",
-        )
-
     if file_context != state["last_hinted_file"]:
         state["hint_level"] = 0
         state["hint_history"] = []  # file changed -> hints start over
@@ -243,7 +234,8 @@ def hint(body: HintRequest):
 
     # the hint bot sees only the code + its own earlier hints this round,
     # which is what keeps levels 1-4 on the same problem
-    hint_text = get_hint(context_block, level, state["hint_history"])
+    # an empty file gets "how to get started" hints based on the project spec
+    hint_text = get_hint(context_block, level, state["hint_history"], empty_file=not file_context.strip())
 
     # same bookkeeping as the notebook's chatbot(): the hint goes into the
     # hint bot's history, and (with the notebook's prefix) into the tutor's

@@ -13,7 +13,7 @@ HINT_USER_MESSAGE = "I pressed the hint button."  # same text the notebook's on_
 
 # Asks the model for a hint at the given level.
 # If a level 1-3 hint contains code, it asks again (up to 3 tries) and finally falls back to a safe generic hint.
-def get_hint(context_block: str, level: int, hint_history: list) -> str:
+def get_hint(context_block: str, level: int, hint_history: list, empty_file: bool = False) -> str:
     """Guardrail-checked hint generation. Same retry pattern as before:
     generate, check with leaks_code(), and if it leaked at levels 1-3,
     tighten the prompt and retry (up to MAX_ATTEMPTS), falling back to a
@@ -23,7 +23,7 @@ def get_hint(context_block: str, level: int, hint_history: list) -> str:
     hints for the current round, passed back as conversation turns so it can
     stay on the SAME problem across levels 1-4 (the hint prompt tells it to).
     The caller appends to it and clears it when the file changes."""
-    system_prompt = build_hint_system_prompt(level, context_block)
+    system_prompt = build_hint_system_prompt(level, context_block, empty_file)
     messages = list(hint_history) + [{"role": "user", "content": HINT_USER_MESSAGE}]
 
     for _ in range(MAX_ATTEMPTS):

@@ -75,9 +75,42 @@ HINT_TEMPERATURE = 0.3
 TUTOR_TEMPERATURE = 0.7
 
 
+# Used instead of HINT_SYSTEM_PROMPT when the student's file is still empty. There is no bug to
+# find, so the hints help the student get STARTED, using the first feature of the project spec.
+EMPTY_FILE_HINT_PROMPT = """You are a programming tutor helping a student build a small Python project (described below). \
+The student pressed the hint button but their file is still EMPTY, so they probably do not know how to get started. \
+This is hint {hint_level} of 4.
+
+Help them start with the FIRST feature in the project description. Do not mention any bug or any existing code, \
+because there is none yet.
+
+IMPORTANT: Unless this is hint 4, NEVER write code. Each hint must reveal only a little more than the previous one. \
+The examples only show how detailed each hint should be. Write your own hint about the student's actual project. \
+Give ONE short hint, and ONLY in the following way: """
+
+EMPTY_FILE_HINT_INSTRUCTIONS = {
+    1: "Suggest which feature to start with (the first one in the description) and name the Python concept "
+       "they need, such as defining a function. No code. "
+       'Example: "A good first step is the addition feature. In Python, a function is a good way to hold it."',
+    2: "Say what that first function should take in and what it should give back, in plain words. No code. "
+       'Example: "Your add function takes two numbers as input and gives back their sum."',
+    3: "Describe in words the steps to write the first function, including its name and parameters. No code. "
+       'Example: "Define a function called add with two parameters, then return the first plus the second."',
+    4: "Give a short starter for the first feature, with a short explanation. "
+       'Example: "def add(a, b): return a + b. The function takes two numbers and returns their sum."',
+}
+
+
 # Builds the full instructions for the hint bot: the general hint rules,
 # the wording for this hint level, and the student's project and code.
-def build_hint_system_prompt(level: int, context_block: str) -> str:
+# If the file is empty, the "getting started" version is used instead.
+def build_hint_system_prompt(level: int, context_block: str, empty_file: bool = False) -> str:
+    if empty_file:
+        return (
+            EMPTY_FILE_HINT_PROMPT.format(hint_level=level)
+            + EMPTY_FILE_HINT_INSTRUCTIONS[level]
+            + context_block
+        )
     return (
         HINT_SYSTEM_PROMPT.format(hint_level=level)
         + HINT_SYSTEM_INSTRUCTIONS[level]
