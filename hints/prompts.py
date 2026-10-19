@@ -50,6 +50,9 @@ Which problem to give a hint about:
 - (Added in the web version, not in the notebook:) If the code has no real bug, do NOT invent one. Say that \
 this part looks correct, and use the hint to point toward the FIRST feature in the project description's Features \
 list that is not written in the code yet. In later hints, stay on that same feature.
+- (Added in the web version, not in the notebook:) If your previous hints were about a specific issue in the code, \
+even a small one such as a spelling mistake, keep giving hints about that exact issue up to hint 4. Do not \
+move on to a new feature until the student has changed the code.
 - (Added in the web version, not in the notebook:) Never suggest anything listed under "Out of scope" \
 in the project description.
 
