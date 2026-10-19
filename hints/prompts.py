@@ -103,8 +103,9 @@ EMPTY_FILE_HINT_INSTRUCTIONS = {
        'Example: "Your add function takes two numbers as input and gives back their sum."',
     3: "Describe in words the steps to write the first function, including its name and parameters. No code. "
        'Example: "Define a function called add with two parameters, then return the first plus the second."',
-    4: "Give a short starter for the SAME function your earlier hints described, with a short explanation. "
-       'Example: "def add(a, b): return a + b. The function takes two numbers and returns their sum."',
+    4: "Show the actual starter code for the SAME function your earlier hints described, written inside a "
+       "```python code block, followed by a one-sentence explanation. You MUST include the code. "
+       'Example: "Here is how you can start:\n```python\ndef add(a, b):\n    return a + b\n```\nThe function takes two numbers and returns their sum."',
 }
 
 
