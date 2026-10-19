@@ -227,6 +227,15 @@ def hint(body: HintRequest):
         state["hint_level"] = 0
         state["hint_history"] = []  # file changed -> hints start over
         state["last_hinted_file"] = file_context
+    # Already at the last hint and the code hasn't changed: the model would only invent
+    # progress, so give a fixed message instead (saving changed code resets the hints).
+    if state["hint_level"] >= MAX_HINT_LEVEL:
+        return HintResponse(
+            level=MAX_HINT_LEVEL,
+            hint="That was the last hint for this step. Make the change in the editor, "
+                 "save it, and press Hint again.",
+        )
+
     state["hint_level"] = min(state["hint_level"] + 1, MAX_HINT_LEVEL)
     level = state["hint_level"]
 
