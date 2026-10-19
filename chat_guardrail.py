@@ -1,3 +1,7 @@
+# This file protects the chat from leaking code.
+# It decides whether the student asked for code, and whether the tutor's answer contains code
+# when it shouldn't. Used by /chat in main.py.
+
 import re
 
 from hints.leak_check import leaks_code
@@ -17,10 +21,13 @@ _EXPLICIT_CODE_REQUEST = re.compile(
 )
 
 
+# Returns True if the student's message explicitly asks for code (e.g. 'show me', 'example'),
+# in which case code in the answer is allowed.
 def wants_code(message: str) -> bool:
     return bool(_EXPLICIT_CODE_REQUEST.search(message))
 
 
+# Returns True if the tutor's answer contains code. Uses the same detector as the hints.
 def chat_leaks_code(response_text: str) -> bool:
     """Reuses the same detector as hints (code fence or code-shaped line)."""
     return leaks_code(response_text)

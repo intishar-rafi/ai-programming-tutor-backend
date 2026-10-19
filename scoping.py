@@ -1,3 +1,7 @@
+# This file handles everything BEFORE tutoring begins: the 1/2 welcome menu,
+# picking an existing project, describing a new one, and agreeing on a short project spec with the student.
+# It also holds the greeting and the "Great! Let's get started" message.
+
 """Project scoping flow, ported from the Shipmate notebook's shipmate()/
 scope() functions: lets a student pick an existing project or describe a
 new one before tutoring starts. Same SCOPING_SYSTEM_PROMPT / SPEC_SYSTEM_
@@ -55,6 +59,8 @@ START_MESSAGE = """Great! Let's get started with the programming. You know where
 just press the "Hint" button or type a question!"""
 
 
+# Adds blank lines between the sections of the project spec (Goal, Features, Out of scope...).
+# The model doesn't always format them nicely, so we fix the spacing here. Display only.
 def format_spec(text: str) -> str:
     """Guarantees a blank line between the spec's sections, whatever the
     model returned. The chat display merges single line breaks into one
@@ -67,6 +73,8 @@ def format_spec(text: str) -> str:
     return text.strip()
 
 
+# Runs the conversation BEFORE tutoring starts: menu -> pick/describe -> scoping -> tutoring.
+# Reads the session's current phase, decides what to reply, and moves the session to the next phase.
 def handle_menu(state: dict, text: str) -> str:
     """The pre-tutoring conversation (menu -> pick / describe -> scoping ->
     tutoring). Returns the reply text and mutates state in place — the

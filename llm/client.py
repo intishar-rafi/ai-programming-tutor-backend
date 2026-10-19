@@ -1,3 +1,6 @@
+# This file is the only place that talks to the AI model (OpenAI gpt-4o-mini).
+# Other files call its functions to get an answer, either all at once or streamed word by word.
+
 import os
 
 from dotenv import load_dotenv
@@ -21,6 +24,7 @@ LLM_MODEL = os.environ.get("LLM_MODEL", "gpt-4o-mini")
 _client: OpenAI | None = None
 
 
+# Creates the OpenAI connection the first time it is needed and reuses it afterwards.
 def _get_client() -> OpenAI:
     global _client
     if _client is None:
@@ -31,6 +35,7 @@ def _get_client() -> OpenAI:
     return _client
 
 
+# Simple one-shot model call: one system prompt, one user message, returns the text.
 def generate_completion(system_prompt: str, user_prompt: str) -> str:
     """Non-streaming call, used for hints (the leak-check guardrail needs
     the full text before deciding whether to show it)."""
@@ -46,26 +51,31 @@ def generate_completion(system_prompt: str, user_prompt: str) -> str:
     return (response.choices[0].message.content or "").strip()
 
 
-def generate_chat_completion(system_prompt: str, messages: list[dict]) -> str:
+# Model call with a whole conversation. Waits for the full answer and returns it as text.
+# Used when the answer must be checked before the student sees it.
+def generate_chat_completion(system_prompt: str, messages: list[dict], temperature: float = 0.4) -> str:
     """Non-streaming, multi-turn version — used for /chat when a leak-check
     needs to inspect the full response before it's shown (see
-    chat_guardrail.py). Same shape as stream_completion but stream=False."""
+    chat_guardrail.py), and for hints (which need the hint history as
+    earlier turns). Same shape as stream_completion but stream=False.
+    `temperature` is per call: the notebook uses 0.3 for hints, 0.7 for chat."""
     response = _get_client().chat.completions.create(
         model=LLM_MODEL,
         messages=[{"role": "system", "content": system_prompt}] + messages,
-        temperature=0.4,
+        temperature=temperature,
         max_tokens=700,
     )
     return (response.choices[0].message.content or "").strip()
 
 
-def stream_completion(system_prompt: str, messages: list[dict]):
+# Same as above, but yields the answer in small pieces as the model produces them (typing effect).
+def stream_completion(system_prompt: str, messages: list[dict], temperature: float = 0.4):
     """Streaming generator, used for ordinary tutor chat (no leak-check
     needed there, so streaming is fine)."""
     stream = _get_client().chat.completions.create(
         model=LLM_MODEL,
         messages=[{"role": "system", "content": system_prompt}] + messages,
-        temperature=0.4,
+        temperature=temperature,
         max_tokens=700,
         stream=True,
     )

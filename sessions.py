@@ -1,3 +1,8 @@
+# This file is the app's memory.
+# It stores everything the app needs to remember for each browser tab: the chat history, hint level,
+# current code, chosen project and which step of the menu the student is on.
+# It also creates and lists the project folders on disk.
+
 """In-memory per-session state — decided against a DB for this project to
 keep it simple. State is scoped to a session_id the frontend generates
 (e.g. a UUID on page load) and sends with every request. Lost on server
@@ -33,12 +38,15 @@ class SessionState(TypedDict, total=False):
     diff_text: str  # persisted unified diff, re-shown when the file hasn't changed since last time
     last_hinted_file: Optional[str]
     hint_level: int
-    history: list  # [{"role": "user"|"assistant", "content": str}, ...]
+    hint_history: list  # only the hints of the current round, seen by the hint bot (notebook's hint_history)
+    history: list  # [{"role": "user"|"assistant", "content": str}, ...] — the tutor's conversation (own_history)
 
 
 _sessions: dict = {}
 
 
+# Returns the memory for one browser tab (identified by session_id).
+# If the tab is new, it creates a fresh blank memory. Every endpoint calls this first.
 def get_session(session_id: str) -> SessionState:
     return _sessions.setdefault(session_id, {
         "phase": "menu",
@@ -50,10 +58,13 @@ def get_session(session_id: str) -> SessionState:
         "diff_text": "",
         "last_hinted_file": None,
         "hint_level": 0,
+        "hint_history": [],
         "history": [],
     })
 
 
+# Returns the names of all saved projects: every folder in the workspace that has a main.py.
+# The sidebar and the '1: existing project' menu both use this.
 def list_projects() -> list:
     return sorted(
         d for d in os.listdir(WORKSPACE_DIR)
@@ -61,6 +72,8 @@ def list_projects() -> list:
     )
 
 
+# Makes a new project folder on disk. Saves the spec as PROJECT.md and creates an empty main.py.
+# The folder name is the project name turned into a safe snake_case word.
 def create_project(name: str, spec: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_") or "project"
     project_dir = os.path.join(WORKSPACE_DIR, slug)
@@ -71,6 +84,8 @@ def create_project(name: str, spec: str) -> str:
     return project_dir
 
 
+# Points a session at a project and starts the tutoring phase.
+# Loads the project's spec and code, and resets hint level, hint history, chat history and diff.
 def start_tutoring(state: SessionState, project_dir: str) -> SessionState:
     """Point a session at a project and reset its tutoring state — the
     per-session equivalent of the notebook's start_tutoring(), which reset
@@ -87,11 +102,14 @@ def start_tutoring(state: SessionState, project_dir: str) -> SessionState:
     state["diff_text"] = ""
     state["last_hinted_file"] = None
     state["hint_level"] = 0
+    state["hint_history"] = []
     state["history"] = []
     state["phase"] = "tutoring"
     return state
 
 
+# Called when the student's code changes (upload/save).
+# Saves it to the project's main.py, remembers the old version so a diff can be made, and restarts the hints.
 def set_file(session_id: str, content: str) -> SessionState:
     """Called by /upload once a project is chosen: saves the new content
     both in the session and to the project's main.py on disk (so it
@@ -105,4 +123,5 @@ def set_file(session_id: str, content: str) -> SessionState:
     state["file_context"] = content
     state["last_hinted_file"] = None
     state["hint_level"] = 0
+    state["hint_history"] = []  # file changed -> hints start over (notebook: hint_history.clear())
     return state
