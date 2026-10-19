@@ -47,6 +47,11 @@ Which problem to give a hint about:
 - If you have NOT given a hint yet in this conversation: choose the problem that is highest up in the file.
 - If you HAVE given hints already: stay on the SAME problem as your previous hints. Do not switch to another problem.
 - A function that still only contains `pass` is unfinished, not a problem. Skip it.
+- (Added in the web version, not in the notebook:) If the code has no real bug, do NOT invent one. Say that \
+this part looks correct, and use the hint to point toward the next feature in the project description that is \
+not written yet.
+- (Added in the web version, not in the notebook:) Never suggest anything listed under "Out of scope" \
+in the project description.
 
 IMPORTANT: Unless this is hint 4, NEVER write the corrected code or the corrected line, and never say "you likely meant ...".
 Each hint must reveal only a little more than the previous one.
