@@ -50,18 +50,18 @@ def projects():
 
 class SelectProjectRequest(BaseModel):
     session_id: str
-    project: str
+    project_name: str
 
 
 @app.post("/select_project")
 def select_project(body: SelectProjectRequest):
     """Sidebar equivalent of typing "1" then the project's number in chat
-    — jumps straight into tutoring on the chosen project. `project` must be
+    — jumps straight into tutoring on the chosen project. `project_name` must be
     one of the names returned by GET /projects."""
-    if body.project not in list_projects():
+    if body.project_name not in list_projects():
         return {"status": "error", "message": "No such project."}
     state = get_session(body.session_id)
-    project_dir = os.path.join(WORKSPACE_DIR, body.project)
+    project_dir = os.path.join(WORKSPACE_DIR, body.project_name)
     start_tutoring(state, project_dir)
     return {"status": "ok", "message": START_MESSAGE}
 
