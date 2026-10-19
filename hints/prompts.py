@@ -98,14 +98,14 @@ Give ONE short hint, and ONLY in the following way: """
 EMPTY_FILE_HINT_INSTRUCTIONS = {
     1: "Suggest which feature to start with (the first one in the description) and name the Python concept "
        "they need, such as defining a function. No code. "
-       'Example: "A good first step is the addition feature. In Python, a function is a good way to hold it."',
+       'Example: "A good first step is the first feature in your list. In Python, a function is a good way to hold it."',
     2: "Say what that first function should take in and what it should give back, in plain words. No code. "
-       'Example: "Your add function takes two numbers as input and gives back their sum."',
+       'Example: "Your first function takes in the values it needs and gives back the result."',
     3: "Describe in words the steps to write the first function, including its name and parameters. No code. "
-       'Example: "Define a function called add with two parameters, then return the first plus the second."',
+       'Example: "Define a function with a clear name and the parameters it needs, then return the result."',
     4: "Show the actual starter code for the SAME function your earlier hints described, written inside a "
        "```python code block, followed by a one-sentence explanation. You MUST include the code. "
-       'Example: "Here is how you can start:\n```python\ndef add(a, b):\n    return a + b\n```\nThe function takes two numbers and returns their sum."',
+       'Example: "Here is how you can start:\n```python\ndef function_name(parameter):\n    return result\n```\nThe function takes its input and returns the result."',
 }
 
 
