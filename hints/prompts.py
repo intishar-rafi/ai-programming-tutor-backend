@@ -83,6 +83,8 @@ This is hint {hint_level} of 4.
 
 Help them start with the FIRST feature in the project description. Do not mention any bug or any existing code, \
 because there is none yet.
+If you have already given hints in this conversation, stay on the SAME first step (the same function) as your \
+previous hints. Do not move on to the next feature.
 
 IMPORTANT: Unless this is hint 4, NEVER write code. Each hint must reveal only a little more than the previous one. \
 The examples only show how detailed each hint should be. Write your own hint about the student's actual project. \
@@ -96,7 +98,7 @@ EMPTY_FILE_HINT_INSTRUCTIONS = {
        'Example: "Your add function takes two numbers as input and gives back their sum."',
     3: "Describe in words the steps to write the first function, including its name and parameters. No code. "
        'Example: "Define a function called add with two parameters, then return the first plus the second."',
-    4: "Give a short starter for the first feature, with a short explanation. "
+    4: "Give a short starter for the SAME function your earlier hints described, with a short explanation. "
        'Example: "def add(a, b): return a + b. The function takes two numbers and returns their sum."',
 }
 
