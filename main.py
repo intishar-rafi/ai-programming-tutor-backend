@@ -223,6 +223,15 @@ def hint(body: HintRequest):
 
     file_context = state["file_context"]
 
+    # Nothing written yet: there is no problem to hint about, and the model
+    # would invent one (e.g. a bug in a function that doesn't exist).
+    if not file_context.strip():
+        return HintResponse(
+            level=0,
+            hint="Your file is still empty. Write your first function from the Features list, "
+                 "save it, and press Hint again if you get stuck.",
+        )
+
     if file_context != state["last_hinted_file"]:
         state["hint_level"] = 0
         state["hint_history"] = []  # file changed -> hints start over
