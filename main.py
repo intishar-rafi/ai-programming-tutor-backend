@@ -63,7 +63,14 @@ def select_project(body: SelectProjectRequest):
     state = get_session(body.session_id)
     project_dir = os.path.join(WORKSPACE_DIR, body.project_name)
     start_tutoring(state, project_dir)
-    return {"status": "ok", "message": START_MESSAGE}
+    # `content` is the project's saved main.py, so the frontend can load it
+    # into the editor — without it, switching projects shows an empty editor.
+    return {
+        "status": "ok",
+        "message": START_MESSAGE,
+        "content": state["file_context"],
+        "project_name": body.project_name,
+    }
 
 
 class UploadRequest(BaseModel):
