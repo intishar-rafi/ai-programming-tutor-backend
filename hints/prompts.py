@@ -92,19 +92,21 @@ If you have already given hints in this conversation, stay on the SAME first ste
 previous hints. Do not move on to the next feature.
 
 IMPORTANT: Unless this is hint 4, NEVER write code. Each hint must reveal only a little more than the previous one. \
-The examples only show how detailed each hint should be. Write your own hint about the student's actual project. \
+The examples only show how detailed each hint should be. Do NOT copy their wording: write your own hint \
+about the student's actual project. \
 Give ONE short hint, and ONLY in the following way: """
 
 EMPTY_FILE_HINT_INSTRUCTIONS = {
-    1: "Suggest which feature to start with (the first one in the description) and name the Python concept "
-       "they need, such as defining a function. No code. "
+    1: "Name the first feature of the project description explicitly, in your own words (do not just say "
+       "'the first feature'), and name the Python concept they need, such as defining a function. No code. "
        'Example: "A good first step is the first feature in your list. In Python, a function is a good way to hold it."',
     2: "Say what that first function should take in and what it should give back, in plain words. No code. "
        'Example: "Your first function takes in the values it needs and gives back the result."',
     3: "Describe in words the steps to write the first function, including its name and parameters. No code. "
        'Example: "Define a function with a clear name and the parameters it needs, then return the result."',
     4: "Show the actual starter code for the SAME function your earlier hints described, written inside a "
-       "```python code block, followed by a one-sentence explanation. You MUST include the code. "
+       "```python code block, followed by a one-sentence explanation. You MUST include the code, and it must contain real first lines, "
+       "not just `pass`. "
        'Example: "Here is how you can start:\n```python\ndef function_name(parameter):\n    return result\n```\nThe function takes its input and returns the result."',
 }
 
