@@ -12,7 +12,7 @@ import re
 from llm.client import generate_chat_completion
 from sessions import WORKSPACE_DIR, create_project, list_projects, start_tutoring
 
-SCOPING_SYSTEM_PROMPT = """You are Shipmate, a programming tutor helping a student scope a new Python project. \
+SCOPING_SYSTEM_PROMPT = """You are Little by little, a programming tutor helping a student scope a new Python project. \
 The student will write ALL the code themselves later, so NEVER write code, function names or implementation details. \
 Your only job is a short specification of a small version of their idea that fits in a single .py file under 1000 lines of code.
 
@@ -44,7 +44,7 @@ SPEC_SYSTEM_PROMPT = """Write a PROJECT.md for the project that was just agreed 
 so keep it short. Use exactly these sections: # name, ## Goal, ## Features, ## Out of scope, \
 ## Constraints (single main.py, under 1000 lines, standard library only). Output only the markdown."""
 
-GREETING = """Hello, I am Shipmate. What can I help you with today?
+GREETING = """Hello, I am Little by little. What can I help you with today?
 
 1: I want to continue work on an existing project
 2: I want to start a new project
@@ -53,6 +53,18 @@ Type 1 or 2 to make your choice."""
 
 START_MESSAGE = """Great! Let's get started with the programming. You know where to find me if you need any help, \
 just press the "Hint" button or type a question!"""
+
+
+def format_spec(text: str) -> str:
+    """Guarantees a blank line between the spec's sections, whatever the
+    model returned. The chat display merges single line breaks into one
+    paragraph, and the model doesn't reliably follow a layout instruction,
+    so the spacing is enforced here instead of in the prompt. Display only
+    — scoping_history keeps the model's raw reply."""
+    text = re.sub(r"(?m)^[ \t]*(Goal:|Features:|Out of scope:|Type yes to start)", r"\n\1", text)
+    text = re.sub(r"(?m)^(Features:|Out of scope:)[ \t]*\n(?!\n)", r"\1\n\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
 
 
 def handle_menu(state: dict, text: str) -> str:
@@ -94,14 +106,14 @@ def handle_menu(state: dict, text: str) -> str:
         state["scoping_history"].append({"role": "user", "content": text})
         reply = generate_chat_completion(SCOPING_SYSTEM_PROMPT, state["scoping_history"])
         state["scoping_history"].append({"role": "assistant", "content": reply})
-        return reply
+        return format_spec(reply)
 
     elif phase == "scoping":
         if stripped.lower() != "yes":
             state["scoping_history"].append({"role": "user", "content": text})
             reply = generate_chat_completion(SCOPING_SYSTEM_PROMPT, state["scoping_history"])
             state["scoping_history"].append({"role": "assistant", "content": reply})
-            return reply
+            return format_spec(reply)
         spec = generate_chat_completion(SPEC_SYSTEM_PROMPT, state["scoping_history"])
         name_match = re.search(r"Name:\s*(\S+)", state["scoping_history"][-1]["content"])
         project_dir = create_project(name_match.group(1) if name_match else "my_project", spec)
