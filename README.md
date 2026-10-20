@@ -28,28 +28,28 @@ One in-memory session store keyed by `session_id` (one per browser tab), plus a 
 
 ```mermaid
 flowchart TD
-    client[Frontend] --> chat[POST /chat]
-    client --> hint[POST /hint]
-    client --> upload[POST /upload]
-    client --> projects[GET /projects, POST /select_project]
+    client["Frontend&nbsp;&nbsp;"] --> chat["POST /chat&nbsp;&nbsp;"]
+    client --> hint["POST /hint&nbsp;&nbsp;"]
+    client --> upload["POST /upload&nbsp;&nbsp;"]
+    client --> projects["GET /projects, POST /select_project&nbsp;&nbsp;"]
 
-    chat --> menu{Project chosen?}
-    menu -- no --> scoping[Menu + scoping<br/>scoping.py]
-    menu -- yes --> tutor[Tutor, T=0.7]
+    chat --> menu{"Project chosen?&nbsp;&nbsp;"}
+    menu -- no --> scoping["Menu and scoping<br/>scoping.py&nbsp;&nbsp;"]
+    menu -- yes --> tutor["Tutor<br/>temperature 0.7&nbsp;&nbsp;"]
 
-    hint --> ladder[Hint bot, levels 1-4, T=0.3]
+    hint --> ladder["Hint bot, levels 1 to 4<br/>temperature 0.3&nbsp;&nbsp;"]
 
-    upload --> state[(Session state<br/>code, history, hint level)]
-    projects --> files[(workspace/<br/>main.py + PROJECT.md)]
+    upload --> state[("Session state<br/>code, history, hint level&nbsp;&nbsp;")]
+    projects --> files[("workspace folder<br/>main.py + PROJECT.md&nbsp;&nbsp;")]
     upload --> files
 
-    state --> context[context.py<br/>plan + code + diff]
+    state --> context["context.py<br/>plan + code + diff&nbsp;&nbsp;"]
     context --> tutor
     context --> ladder
 
-    tutor --> check{Code-leak check}
+    tutor --> check{"Code-leak check&nbsp;&nbsp;"}
     ladder --> check
-    scoping --> llm[OpenAI API]
+    scoping --> llm["OpenAI API&nbsp;&nbsp;"]
     check --> llm
 ```
 
