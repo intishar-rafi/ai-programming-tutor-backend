@@ -1,0 +1,1517 @@
+{
+ "model": "gemma3:12b",
+ "iterations": 3,
+ "scoping": [
+  {
+   "case": "calculator",
+   "group": "normal",
+   "iteration": 0,
+   "input": "A tiny calculator that adds and subtracts two numbers",
+   "draft": "Name: simple_calculator\n\nGoal: The program will allow a user to enter two numbers and an operation (+ or -) and display the result.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user for an operation (+ or -).\n* The program will calculate and display the result of the operation.\n* The program will handle invalid operation input by displaying an error message.\n\nOut of scope:\n\n* Multiplication and division.\n* Floating-point numbers.\n* User input validation beyond checking for valid operation symbols.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "todo",
+   "group": "normal",
+   "iteration": 0,
+   "input": "A to-do list where I can add, list and remove tasks",
+   "draft": "Name: simple_todo\n\nGoal: To create a command-line application that allows users to manage a list of tasks.\n\nFeatures:\n\n* Users can add new tasks to the list.\n* Users can view the current list of tasks.\n* Users can remove tasks from the list.\n* The task list should be saved to a file so it persists between program runs.\n* Tasks should be identified by a number for easy removal.\n\nOut of scope:\n\n* Task prioritization\n* Due dates or deadlines\n* User accounts or sharing lists\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "quiz",
+   "group": "normal",
+   "iteration": 0,
+   "input": "A quiz game that asks capital city questions and keeps score",
+   "draft": "Name: capital_quiz\n\nGoal: To create a simple quiz game that tests the user's knowledge of capital cities and tracks their score.\n\nFeatures:\n\n* A list of at least 5 country-capital pairs.\n* A loop that presents each country and prompts the user for the capital.\n* Input validation to ensure the user enters a string.\n* Scoring that increments for correct answers and displays the final score.\n* Clear feedback to the user indicating whether their answer was correct or incorrect.\n\nOut of scope:\n\n* A graphical user interface (GUI).\n* Multiple difficulty levels.\n* A timer or time limit for answering questions.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "converter",
+   "group": "normal",
+   "iteration": 0,
+   "input": "A program that converts between Celsius and Fahrenheit",
+   "draft": "Name: temperature_converter\n\nGoal: The program will allow the user to convert temperatures between Celsius and Fahrenheit.\n\nFeatures:\n\n* The program will prompt the user to select a conversion direction (Celsius to Fahrenheit or Fahrenheit to Celsius).\n* The program will accept a numerical temperature input from the user.\n* The program will perform the appropriate conversion calculation.\n* The program will display the converted temperature to the user, formatted to one decimal place.\n* The program will include a simple input validation to ensure the user enters a number.\n\nOut of scope:\n\n* Handling temperatures outside of a reasonable range (e.g., extremely high or low values).\n* Support for other temperature scales (e.g., Kelvin, Rankine).\n* A graphical user interface.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "hangman",
+   "group": "normal",
+   "iteration": 0,
+   "input": "A hangman word guessing game",
+   "draft": "Name: hangman_game\n\nGoal: The program will play a game of hangman with the user, guessing a randomly selected word.\n\nFeatures:\n\n* The program will select a word from a predefined list.\n* The program will display the word with underscores representing unguessed letters.\n* The user will be prompted to guess a letter.\n* The program will update the displayed word to reveal correctly guessed letters.\n* The program will keep track of the number of incorrect guesses.\n\nOut of scope:\n\n* Hints\n* Multiple players\n* Graphical user interface\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "greeting",
+   "group": "vague",
+   "iteration": 0,
+   "input": "hi",
+   "draft": "Name: simple_todo_list\n\nGoal: To create a command-line application that allows users to manage a simple to-do list.\n\nFeatures:\n\n* The application should allow users to add tasks to the list.\n* The application should allow users to view the current list of tasks.\n* The application should allow users to mark tasks as complete.\n* The application should save the to-do list to a file so it persists between sessions.\n\nOut of scope:\n\n* Task prioritization\n* Due dates for tasks\n* User authentication\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "unsure",
+   "group": "vague",
+   "iteration": 0,
+   "input": "I don't know what to build",
+   "draft": "Name: simple_text_adventure\n\nGoal: To create a basic text-based adventure game where the player makes choices to navigate a small environment.\n\nFeatures:\n\n* The game will have three distinct locations.\n* The player will have a limited number of actions they can take (e.g., north, south, east, west, look).\n* The game will present descriptions of each location to the player.\n* The game will have a simple win/lose condition based on the player's choices.\n* The game will use simple text input to receive player commands.\n\nOut of scope:\n\n* Inventory system\n* Combat or enemies\n* Complex puzzles\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "add_feature",
+   "group": "change",
+   "iteration": 0,
+   "input": "Please also add multiplication",
+   "draft": "Name: simple_calculator\n\nGoal: The program will allow a user to input two numbers and an operation (+, - or *) and then display the result.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user for an operation (+, - or *).\n* The program will perform the calculation based on the user's input.\n* The program will display the result of the calculation.\n\nOut of scope:\n\n* Handling division.\n* Input validation beyond ensuring the operation is +, -, or *.\n* Handling non-numeric input.\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "The program will prompt the user for the first number.",
+    "The program will prompt the user for the second number.",
+    "The program will prompt the user for an operation (+ or -).",
+    "The program will perform the calculation based on the user's input.",
+    "The program will display the result of the calculation."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "remove_feature",
+   "group": "change",
+   "iteration": 0,
+   "input": "Remove the score tracking, I don't want scores",
+   "draft": "Name: capital_city_quiz\n\nGoal: To create a simple quiz game that tests the user's knowledge of capital cities.\n\nFeatures:\n\n* A list of at least 10 country-capital city pairs.\n* A question prompt displaying a country and asking for its capital.\n* User input to enter their answer.\n* Feedback indicating whether the answer is correct or incorrect.\n* Termination of the quiz after all questions have been asked.\n\nOut of scope:\n\n* Graphics or a user interface beyond text-based input/output.\n* Multiple-choice questions.\n* Score tracking.\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "A list of at least 10 country-capital city pairs.",
+    "A question prompt displaying a country and asking for its capital.",
+    "User input to enter their answer.",
+    "Scoring based on correct answers.",
+    "Display of the final score at the end of the quiz."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "rename",
+   "group": "change",
+   "iteration": 0,
+   "input": "Change the name to todo_master",
+   "draft": "Name: todo_master\n\nGoal: Create a command-line application that allows users to manage a list of to-do tasks.\n\nFeatures:\n\n* Users can add new tasks to the list.\n* Users can view the current list of tasks.\n* Users can remove tasks from the list.\n* The task list should be saved to a file so it persists between program runs.\n* Tasks should be identified by a number for removal.\n\nOut of scope:\n\n* Task prioritization\n* Due dates\n* User accounts\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "Users can add new tasks to the list.",
+    "Users can view the current list of tasks.",
+    "Users can remove tasks from the list.",
+    "The task list should be saved to a file so it persists between program runs.",
+    "Tasks should be identified by a number for removal."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "calculator",
+   "group": "normal",
+   "iteration": 1,
+   "input": "A tiny calculator that adds and subtracts two numbers",
+   "draft": "Name: simple_calculator\n\nGoal: The program will take two numbers as input and perform addition or subtraction based on user choice.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user to choose between addition and subtraction.\n* The program will display the result of the chosen operation.\n* The program will handle invalid input gracefully, prompting the user again.\n\nOut of scope:\n\n* Multiplication and division\n* More complex mathematical functions\n* Input validation beyond basic number and operation choice\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "todo",
+   "group": "normal",
+   "iteration": 1,
+   "input": "A to-do list where I can add, list and remove tasks",
+   "draft": "Name: simple_todo\n\nGoal: Create a command-line to-do list application that allows users to add, view, and remove tasks.\n\nFeatures:\n\n* Users can add new tasks to the list.\n* Users can view the current list of tasks.\n* Users can remove tasks from the list.\n* Tasks are stored persistently (e.g., in a text file).\n* The application provides a simple menu to guide user interaction.\n\nOut of scope:\n\n* Task prioritization\n* Due dates or deadlines\n* User accounts or sharing lists\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "quiz",
+   "group": "normal",
+   "iteration": 1,
+   "input": "A quiz game that asks capital city questions and keeps score",
+   "draft": "Name: capital_city_quiz\n\nGoal: To create a quiz game that tests the user's knowledge of capital cities and tracks their score.\n\nFeatures:\n\n* The game should present a series of questions, each asking for the capital city of a given country.\n* The game should provide multiple-choice options for each question.\n* The game should keep track of the user's score.\n* The game should display the final score at the end of the quiz.\n* The game should include at least 5 questions.\n\nOut of scope:\n\n* Online leaderboards\n* Difficulty levels\n* Graphics or sound effects\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "converter",
+   "group": "normal",
+   "iteration": 1,
+   "input": "A program that converts between Celsius and Fahrenheit",
+   "draft": "Name: temperature_converter\n\nGoal: The program will allow the user to convert temperatures between Celsius and Fahrenheit.\n\nFeatures:\n\n* The program will prompt the user to select a conversion direction (Celsius to Fahrenheit or Fahrenheit to Celsius).\n* The program will accept a numerical temperature value as input from the user.\n* The program will perform the correct temperature conversion based on the user's selection.\n* The program will display the converted temperature to the user, formatted to one decimal place.\n* The program will include a simple error message if the user enters non-numerical input.\n\nOut of scope:\n\n* Handling temperatures outside of a reasonable range (e.g., extremely high or low temperatures).\n* Supporting other temperature scales (e.g., Kelvin, Rankine).\n* Providing a graphical user interface.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "hangman",
+   "group": "normal",
+   "iteration": 1,
+   "input": "A hangman word guessing game",
+   "draft": "Name: hangman_game\n\nGoal: The player guesses a secret word, letter by letter, with limited attempts.\n\nFeatures:\n\n* The program selects a random word from a predefined list.\n* The player enters guesses, one letter at a time.\n* The program reveals the correctly guessed letters in the word.\n* The program tracks and displays the number of remaining attempts.\n* The game ends when the word is guessed or attempts are exhausted.\n\nOut of scope:\n\n* Graphical user interface (GUI)\n* Hints or word categories\n* Multiplayer functionality\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "greeting",
+   "group": "vague",
+   "iteration": 1,
+   "input": "hi",
+   "draft": "Name: simple_text_adventure\n\nGoal: To create a basic text-based adventure game where the player makes choices to navigate a small environment.\n\nFeatures:\n\n* The game starts with a brief introduction and the player's initial location.\n* The player can move between a few predefined locations using simple commands (e.g., \"north\", \"south\", \"east\", \"west\").\n* Each location will have a short description displayed to the player.\n* The player can interact with objects at each location, triggering events or revealing information.\n* The game ends when the player reaches a specific goal location or encounters a specific event.\n\nOut of scope:\n\n* Combat or complex puzzles.\n* Inventory management.\n* Multiple endings.\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "unsure",
+   "group": "vague",
+   "iteration": 1,
+   "input": "I don't know what to build",
+   "draft": "Name: simple_number_guesser\n\nGoal: Create a program that prompts the user to guess a randomly generated number within a specified range.\n\nFeatures:\n\n* The program generates a random integer between 1 and 100 (inclusive).\n* The program prompts the user to enter a guess.\n* The program provides feedback to the user, indicating if their guess is too high or too low.\n* The program keeps track of the number of guesses the user has made.\n* The program congratulates the user and displays the number of guesses taken when they guess correctly.\n\nOut of scope:\n\n* Difficulty levels (e.g., different number ranges)\n* User scoreboards\n* Graphical user interface (GUI)\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "add_feature",
+   "group": "change",
+   "iteration": 1,
+   "input": "Please also add multiplication",
+   "draft": "Name: simple_calculator\n\nGoal: The program will allow a user to enter two numbers and an operation (+, - or *) and display the result.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user for an operation (+, - or *).\n* The program will calculate and display the result of the operation.\n* The program will handle invalid operation input gracefully.\n\nOut of scope:\n\n* Division.\n* Floating-point numbers.\n* Error handling beyond invalid operation input.\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "The program will prompt the user for the first number.",
+    "The program will prompt the user for the second number.",
+    "The program will prompt the user for an operation (+ or -).",
+    "The program will calculate and display the result of the operation.",
+    "The program will handle invalid operation input gracefully."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "remove_feature",
+   "group": "change",
+   "iteration": 1,
+   "input": "Remove the score tracking, I don't want scores",
+   "draft": "Name: capital_city_quiz\n\nGoal: To create a simple quiz game that tests the user's knowledge of capital cities.\n\nFeatures:\n\n* The game should present a series of questions, each asking for the capital city of a given country.\n* The game should read questions and answers from a text file.\n* The game should provide feedback to the user after each question (correct/incorrect).\n* The game should end after presenting all questions.\n\nOut of scope:\n\n* Score tracking\n* Difficulty levels\n* Timed questions\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "The game should present a series of questions, each asking for the capital city of a given country.",
+    "The game should read questions and answers from a text file.",
+    "The game should keep track of the user's score.",
+    "The game should provide feedback to the user after each question (correct/incorrect).",
+    "The game should display the final score at the end of the quiz."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "rename",
+   "group": "change",
+   "iteration": 1,
+   "input": "Change the name to todo_master",
+   "draft": "Name: todo_master\n\nGoal: Allow a user to manage a list of tasks through the command line.\n\nFeatures:\n\n* Allow the user to add a new task to the list.\n* Allow the user to view the current list of tasks.\n* Allow the user to remove a task from the list.\n* Store the tasks in a simple text file.\n* Provide a clear and concise user interface with instructions.\n\nOut of scope:\n\n* Task prioritization\n* Due dates\n* User accounts\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "Allow the user to add a new task to the list.",
+    "Allow the user to view the current list of tasks.",
+    "Allow the user to remove a task from the list.",
+    "Store the tasks in a simple text file.",
+    "Provide a clear and concise user interface with instructions."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "calculator",
+   "group": "normal",
+   "iteration": 2,
+   "input": "A tiny calculator that adds and subtracts two numbers",
+   "draft": "Name: simple_calculator\n\nGoal: The program will allow a user to enter two numbers and an operation (+ or -) and display the result.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user for an operation (+ or -).\n* The program will perform the calculation based on the chosen operation.\n* The program will display the result of the calculation.\n\nOut of scope:\n\n* Handling of invalid input (e.g., non-numeric input).\n* Support for other mathematical operations (e.g., multiplication, division).\n* User interface beyond console input and output.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "todo",
+   "group": "normal",
+   "iteration": 2,
+   "input": "A to-do list where I can add, list and remove tasks",
+   "draft": "Name: simple_todo\n\nGoal: Create a command-line application that allows users to manage a list of tasks.\n\nFeatures:\n\n* The application should allow users to add new tasks to the list.\n* The application should display the current list of tasks to the user.\n* The application should allow users to remove tasks from the list.\n* Tasks should be persisted between application sessions (e.g., saved to a file).\n* The application should provide a clear way to exit.\n\nOut of scope:\n\n* Task prioritization\n* Due dates\n* User accounts\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "quiz",
+   "group": "normal",
+   "iteration": 2,
+   "input": "A quiz game that asks capital city questions and keeps score",
+   "draft": "Name: capital_city_quiz\n\nGoal: To create a simple quiz game that tests the user's knowledge of capital cities and tracks their score.\n\nFeatures:\n\n* A list of at least 10 country-capital city pairs.\n* A function to randomly select a question from the list.\n* A way to present the question to the user.\n* A mechanism for the user to input their answer.\n* A way to check the user's answer and update the score.\n\nOut of scope:\n\n* A graphical user interface (GUI).\n* Online question database.\n* Difficulty levels.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "converter",
+   "group": "normal",
+   "iteration": 2,
+   "input": "A program that converts between Celsius and Fahrenheit",
+   "draft": "Name: temperature_converter\n\nGoal: The program will allow a user to convert temperatures between Celsius and Fahrenheit.\n\nFeatures:\n\n* The program will prompt the user to choose between converting Celsius to Fahrenheit or Fahrenheit to Celsius.\n* The program will ask the user to input a temperature value.\n* The program will perform the conversion using the correct formula.\n* The program will display the converted temperature to the user, clearly indicating the original and converted units.\n* The program will handle invalid input gracefully, prompting the user to enter a valid number.\n\nOut of scope:\n\n* Support for other temperature scales (e.g., Kelvin, Rankine).\n* Graphical user interface (GUI).\n* Saving conversion history.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "hangman",
+   "group": "normal",
+   "iteration": 2,
+   "input": "A hangman word guessing game",
+   "draft": "Name: hangman_game\n\nGoal: To create a simple command-line hangman game where the user guesses a randomly selected word.\n\nFeatures:\n\n* The game selects a random word from a predefined list.\n* The game displays the word with underscores representing unguessed letters.\n* The user enters a letter guess.\n* The game reveals correctly guessed letters in the word.\n* The game tracks the number of incorrect guesses and displays a visual representation (e.g., a simple ASCII art hangman).\n\nOut of scope:\n\n* Graphics or a GUI.\n* Multiple players.\n* Hints or difficulty levels.\n\nType yes to start, or tell me what to change.",
+   "well_formed": true
+  },
+  {
+   "case": "greeting",
+   "group": "vague",
+   "iteration": 2,
+   "input": "hi",
+   "draft": "Name: simple_text_adventure\n\nGoal: To create a basic text adventure game where the player explores a small environment and interacts with objects.\n\nFeatures:\n\n* The game will have three distinct locations.\n* Each location will have a short description.\n* The player will be able to move between locations using simple commands (e.g., \"north\", \"south\").\n* Each location will contain at least one interactive object.\n* The player can \"examine\" objects to learn more about them.\n\nOut of scope:\n\n* Combat or enemies.\n* Inventory management.\n* Complex puzzles.\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "unsure",
+   "group": "vague",
+   "iteration": 2,
+   "input": "I don't know what to build",
+   "draft": "Name: simple_text_adventure\n\nGoal: To create a basic text-based adventure game where the player makes choices to navigate a small environment.\n\nFeatures:\n\n*  The game should have 3-5 distinct locations.\n*  Each location should have a description displayed to the player.\n*  The player should be able to move between locations using text commands (e.g., \"north\", \"south\").\n*  The game should provide feedback based on the player's choices.\n*  The game should have a simple win/lose condition.\n\nOut of scope:\n\n*  Combat or complex puzzles.\n*  Inventory system.\n*  Saving and loading game progress.\n\nType yes to start, or tell me what to change.",
+   "asks_what_student_wants": false
+  },
+  {
+   "case": "add_feature",
+   "group": "change",
+   "iteration": 2,
+   "input": "Please also add multiplication",
+   "draft": "Name: simple_calculator\n\nGoal: The program will take two numbers as input and perform addition, subtraction, or multiplication based on user choice.\n\nFeatures:\n\n* The program will prompt the user for the first number.\n* The program will prompt the user for the second number.\n* The program will prompt the user to select an operation (add, subtract, or multiply).\n* The program will display the result of the chosen operation.\n* The program will handle invalid operation choices gracefully.\n\nOut of scope:\n\n* Division\n* Floating-point numbers\n* Error handling for non-numeric input\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "The program will prompt the user for the first number.",
+    "The program will prompt the user for the second number.",
+    "The program will prompt the user to select an operation (add or subtract).",
+    "The program will display the result of the chosen operation.",
+    "The program will handle invalid operation choices gracefully."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "remove_feature",
+   "group": "change",
+   "iteration": 2,
+   "input": "Remove the score tracking, I don't want scores",
+   "draft": "Name: capital_city_quiz\n\nGoal: To create a simple quiz game that tests the user's knowledge of capital cities.\n\nFeatures:\n\n* A list of at least 10 country-capital city pairs.\n* A question prompt displaying a country and asking for its capital.\n* User input to enter their guess for the capital city.\n* Feedback indicating whether the user's guess is correct or incorrect.\n* Display of the final question after all countries have been quizzed.\n\nOut of scope:\n\n* Scoring system.\n* Timed questions.\n* Difficulty levels.\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "A list of at least 10 country-capital city pairs.",
+    "A question prompt displaying a country and asking for its capital.",
+    "User input to enter their guess for the capital city.",
+    "Scoring system that increments the score for correct answers and provides feedback.",
+    "Display of the final score at the end of the quiz."
+   ],
+   "change_applied": true
+  },
+  {
+   "case": "rename",
+   "group": "change",
+   "iteration": 2,
+   "input": "Change the name to todo_master",
+   "draft": "Name: todo_master\n\nGoal: Create a command-line application that allows users to manage a list of tasks.\n\nFeatures:\n\n* Allow the user to add new tasks to the list.\n* Display the current list of tasks to the user.\n* Allow the user to remove tasks from the list.\n* Save the task list to a file so it persists between sessions.\n* Provide a way to mark tasks as complete.\n\nOut of scope:\n\n* User authentication\n* Task prioritization\n* Due dates\n\nType yes to start, or tell me what to change.",
+   "features_before": [
+    "Allow the user to add new tasks to the list.",
+    "Display the current list of tasks to the user.",
+    "Allow the user to remove tasks from the list.",
+    "Save the task list to a file so it persists between sessions.",
+    "Provide a way to mark tasks as complete."
+   ],
+   "change_applied": true
+  }
+ ],
+ "hints": [
+  {
+   "case": "wrong_operator",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `add` function; consider what operation it should perform.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return a - b`. Does this perform the correct operation?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `add` function is intended to calculate the sum of two numbers, but currently, it's subtracting them. Think about the mathematical operation that addition represents.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return a + b`, because the parameter is lowercase b.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "name_typo",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `rectangle_area` function; there's a small typo that's preventing it from working correctly.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return width * heigth`.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The variable name in the `rectangle_area` function is slightly different from the parameter name. Make sure they match exactly.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return width * height`, because the parameter is `height`.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "off_by_one",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider the upper bound of the `range` function.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `range(1, n)`. What should the upper bound be to include `n`?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `range` function's second argument specifies where the sequence *stops*, but not includes. To include `n` in the sequence, you need to adjust the second argument.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `for i in range(1, n + 1):`, because the `range` function excludes the upper bound.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "missing_return",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider how you'll store the scores before calculating the average.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 6, `scores = [70, 85, 90]`. Does this list contain the scores you want to average?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The code calculates the average correctly, but the project description mentions storing the scores. Think about how you might store the scores in a more flexible way, so the average can be computed from different sets of scores. The next feature to implement is computing the average score.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 6 should be `scores = []`. This initializes an empty list that can be populated with scores later.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "input_is_text",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at how you're calculating the age next year; you're combining a string and a number.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 3,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `next_year = int(age) + 1`, because the `input()` function returns a string, and you need to perform arithmetic on it.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "infinite_loop",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how your loop condition relates to the numbers you want to print.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `while count < 5:`. What should the condition be to include 5?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The project description asks you to print \"Done!\" at the end. This is currently missing from your code.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 4 should be `while count <= 5:`, because you want to include 5 in the printed numbers.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "boundary",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how you're getting the age from the user. Does the `can_vote` function need a number as input?",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 5, `age = int(input(\"Age: \"))`. What is the `can_vote` function expecting?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `can_vote` function expects a number as input, but you're not passing the value of `age` to it. Consider how to pass the user's age to the function.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 6 should be `if can_vote(age):`, because the `can_vote` function needs the `age` variable as an argument.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "swapped_messages",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider how you'll provide feedback to the user when their guess is incorrect.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 16, `print(\"Too high!\")`. Does the message match the guess?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The current feedback is not very helpful. Think about how you could make the user's next guess more informed. The project description mentions \"Too high / Too low\" feedback.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "The project description states that you should \"Say Too high / Too low\". Currently, you only print \"Too high!\" or \"Too low!\". Consider adding the user's guess to the feedback message.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "empty_file",
+   "iteration": 0,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 2,
+     "text": "Your first function should take in two numbers from the user and return those two numbers.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "Let's start by defining a function called `get_numbers`. This function should ask the user to enter the first number, then ask them to enter the second number. The function should then return both numbers as a tuple.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Here is how you can start:\n```python\ndef get_numbers():\n    num1 = input(\"Enter the first number: \")\n    num2 = input(\"Enter the second number: \")\n    return num1, num2\n```\nThis function prompts the user to enter two numbers and then returns them as a tuple.",
+     "fallback": false
+    }
+   ],
+   "l1_3_no_fix": true
+  },
+  {
+   "case": "wrong_operator",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `add` function; consider what operation it should perform.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return a - b`. Does this return the sum of the two numbers?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `subtract` function also has the same error as the `add` function. Make sure both functions perform the correct mathematical operation.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return a + b`, because the function is intended to return the sum of the two input numbers.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "name_typo",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `rectangle_area` function; there's a small typo that's preventing it from working correctly.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return width * heigth`.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The variable name in the `rectangle_area` function doesn't match the parameter name. Make sure they are the same.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return width * height`, because the parameter is `height`.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "off_by_one",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about what the user asked you to do, and how the `range` function works.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `range(1, n)`. What should the upper bound of the range be?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `range` function's second argument is the upper bound, which is *exclusive*. This means the loop stops *before* it reaches that number. To include `n` in your count, you need to adjust the upper bound of the `range` function.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `for i in range(1, n + 1):`, because you want to include `n` in the count.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "missing_return",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider how you'll store the scores before calculating the average.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 6, `scores = [70, 85, 90]`. Think about how the `average` function will use this list.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `average` function needs to receive the list of scores as input. Currently, it's not taking any arguments.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 1 should be `def average(numbers):`. This defines the function and specifies that it accepts a parameter named `numbers`.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "input_is_text",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at how you're calculating the age for next year; you're combining a string and a number.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 3,
+     "text": "Consider what type of data `age` is, and what type of data you need to perform mathematical operations. You might need to convert `age` to a different data type.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `next_year = int(age) + 1`, because the `input()` function returns a string, and you need to convert it to an integer before adding 1.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "infinite_loop",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how your loop condition relates to the numbers you want to print.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `while count < 5:`. What should the condition be to include 5 in the output?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The project description asks you to print \"Done!\" at the end. This is currently done, but it's inside the `while` loop, so it's printed multiple times. Move it outside the loop.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "This part looks correct. The next feature to implement is printing the numbers 0 to 4 with a while loop.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "boundary",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how you're getting the age from the user. Does the `can_vote` function need that information?",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 5, `age = int(input(\"Age: \"))`. The `can_vote` function expects an argument.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `can_vote` function needs to receive the user's age as input. Consider how you're currently using the function on line 6.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 6 should be `if can_vote(age):`. This passes the `age` variable to the `can_vote` function.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "swapped_messages",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how you'll tell the user if their guess is too high or too low.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 16, `print(\"Too high!\")`. Does this message match the condition?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "Consider what should happen when the user's guess is too low. The current code prints \"Too high!\" in that case.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 17 should be `print(\"Too low!\")`, because the parameter is lowercase b.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "empty_file",
+   "iteration": 1,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 2,
+     "text": "Your first function should take in two numbers as input and return their sum.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "Let's focus on that first function. Think about what the function needs to *do*: it needs to receive two numbers from the user, and then it needs to perform the addition operation. Consider what you should name the function to reflect its purpose, and what parameters it should accept to receive those two numbers.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Here is how you can start:\n```python\ndef add_numbers(num1, num2):\n    \"\"\"Adds two numbers and returns the result.\"\"\"\n    return num1 + num2\n```\nThis function takes two numbers, `num1` and `num2`, as input and returns their sum.",
+     "fallback": false
+    }
+   ],
+   "l1_3_no_fix": true
+  },
+  {
+   "case": "wrong_operator",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `add` function; consider what operation it should perform.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return a - b`. Does this return the sum of the two numbers?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `subtract` function also has the same error as the `add` function. It should perform a subtraction, but currently it does too.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return a + b`, because the function is intended to return the sum of the two input numbers.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "name_typo",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at the `rectangle_area` function; there's a small typo that will prevent it from working correctly.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `return width * heigth`.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The variable name in the `rectangle_area` function is slightly different from the parameter name. Make sure they match exactly.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `return width * height`, because the parameter is named `height`.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "off_by_one",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider what the user asked you to count up to.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `range(1, n)`. What should the upper bound of the range be?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The `range` function's second argument is not inclusive. To include the number `n` in your count, you need to adjust the upper bound of the `range`.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `for i in range(1, n + 1):`, because the `range` function excludes the upper bound.",
+     "fallback": false
+    }
+   ],
+   "kind": "surface",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "missing_return",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider how you'll store the scores before calculating the average.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 6, `scores = [70, 85, 90]`. The project description mentions storing a list of scores.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The code is calculating the average correctly, but the project description asks you to store the scores first. The next feature to implement is computing the average score.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 3 should be `return result`, because the function needs to return the calculated average.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "input_is_text",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Take another look at how you're combining the age and 1 in the `next_year` line; they are different data types.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 3,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 4,
+     "text": "Line 2 should be `next_year = int(age) + 1`, because the `input()` function returns a string, and you need to convert it to an integer before adding 1.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": true
+  },
+  {
+   "case": "infinite_loop",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how your loop condition relates to the numbers you want to print.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 2, `while count < 5:`. What should the condition be to include 5?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The project description asks you to print \"Done!\" at the end. Currently, it's printed *after* the loop finishes. Is that the intended behavior?",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 4 should be `print(\"Done!\")` after the `while` loop. This ensures that \"Done!\" is printed after all the numbers have been printed.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "boundary",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Consider how you're getting the user's age into the program.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 5, `age = int(input(\"Age: \"))`. Does the prompt make sense to the user?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The prompt is fine, but the code isn't using the age the user enters. The `can_vote` function takes an argument, but you're not passing the user's age to it.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 6 should be `if can_vote(age):`, because the `can_vote` function needs to receive the user's age as input.",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": false,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "swapped_messages",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Think about how you'll tell the user if their guess is too high or too low.",
+     "fallback": false
+    },
+    {
+     "level": 2,
+     "text": "Check line 16, `print(\"Too high!\")`. Is this the correct message when the guess is too high?",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "The messages \"Too high!\" and \"Too low!\" are currently printed, but the game doesn't yet tell the user if their guess is correct. Consider what needs to happen inside the `else` block.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Line 19 should be `print(\"Too low!\")`, because the parameter is lowercase \"low\".",
+     "fallback": false
+    }
+   ],
+   "kind": "semantic",
+   "l1_3_no_fix": true,
+   "l2_points_at_bug": true,
+   "l4_gives_fix": false
+  },
+  {
+   "case": "empty_file",
+   "iteration": 2,
+   "hints": [
+    {
+     "level": 1,
+     "text": "Try reviewing this part of your code again, step by step.",
+     "fallback": true
+    },
+    {
+     "level": 2,
+     "text": "Your first function should take in two numbers as input and return their sum.",
+     "fallback": false
+    },
+    {
+     "level": 3,
+     "text": "Let's focus on the first feature: getting the two numbers from the user. Start by defining a function called `get_numbers`. This function should ask the user to enter the first number, then ask them to enter the second number. The function should store these two numbers and return them.",
+     "fallback": false
+    },
+    {
+     "level": 4,
+     "text": "Here is how you can start:\n```python\ndef get_numbers():\n    num1 = input(\"Enter the first number: \")\n    num2 = input(\"Enter the second number: \")\n    return num1, num2\n```\nThis function prompts the user for two numbers, stores them as strings, and then returns them as a tuple.",
+     "fallback": false
+    }
+   ],
+   "l1_3_no_fix": true
+  }
+ ],
+ "chat": [
+  {
+   "case": "how_fix_operator",
+   "iteration": 0,
+   "message": "how should I fix my add function?",
+   "text": "You've correctly identified that your `add` function isn't quite right! It's currently subtracting instead of adding.\n\nPress the Hint button for some guidance on how to fix it. It will give you a breakdown of the problem and how to approach it. Let's get that `add` function working correctly!",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "how_fix_typo_wordcode",
+   "iteration": 0,
+   "message": "how do I fix the error in my code?",
+   "text": "Okay, let's tackle that error! It's great that you're proactively trying to fix things.\n\nYou've pressed the Hint button, so let's look at what that first hint revealed. The hint focused on the `rectangle_area` function, specifically the line `return width * heigth`.\n\nThe hint is pointing to a typo! Look closely at the variable name in the `return` statement. You've used `heigth` instead of `height`. Python is very sensitive to these kinds of spelling mistakes.\n\nThink of it like this: imagine you're asking a friend for a book, but you misspell their name. They might not know who you're talking about! Similarly, Python can't find a variable called `heigth` because it doesn't exist.\n\nTry correcting that small typo, and I bet your code will run perfectly. Let me know how it goes! I'm here to help if you get stuck again.",
+   "no_fix": false,
+   "within_hints": false
+  },
+  {
+   "case": "never_stops",
+   "iteration": 0,
+   "message": "my program never stops, what should I do?",
+   "text": "Okay, that's a common issue when you're first learning loops! It means your loop isn't ending when you expect it to.\n\nThink of a loop like a set of instructions that repeat again and again. For the loop to *stop* repeating, something inside the loop *must* change in a way that eventually makes the condition for the loop false.\n\nIn your case, the loop continues as long as `count < 5`. If the value of `count` never gets closer to 5, the condition will *always* be true, and the loop will go on forever.\n\nPress the Hint button if you'd like a closer look at the code involved.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "whats_wrong_boundary",
+   "iteration": 0,
+   "message": "what is wrong with my can_vote function?",
+   "text": "Your `can_vote` function itself is perfectly fine! It does exactly what it's supposed to do: it checks if a given age is greater than 18 and returns `True` if it is, and `False` otherwise.\n\nThe question is more about how you're *using* the function. Let's think about what could go wrong in the rest of your program.\n\nFor example, what happens if the user enters something that's *not* a number when you ask for their age?  The `int()` function will raise an error and your program will crash.  That's a really common thing to run into when you're asking for input from a user.\n\nTo help you think through these kinds of situations, press the Hint button! It will give you a little more information about what might be going on.",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "line_request",
+   "iteration": 0,
+   "message": "what should I change on line 16?",
+   "text": "Okay, let's take a look at line 16: `if guess < secret:`\n\nYou've started off really well! The core logic of your game is already taking shape. Right now, this line is checking if the player's guess is less than the secret number.\n\nHowever, it looks like there's a small logical error. Think about what the game should tell the player if their guess is *not* less than the secret number. It should give them a clue about whether to guess higher or lower.\n\nIf you're feeling stuck, pressing the Hint button will give you a more specific nudge in the right direction!\n\n\n\nWhat questions do you have about the concept of `if/elif/else` statements in general, or about how they apply to your game?",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "explain_hint1",
+   "iteration": 0,
+   "message": "I don't understand the hint, can you explain it?",
+   "text": "Okay, let's break down that hint. It's pointing you to the `add` function.\n\nThe hint says to \"consider what operation it should perform.\" Think about what the word \"add\" means in math. What do you do when you add two numbers together?\n\nLet's say you're adding apples. If you have 2 apples and someone gives you 3 more, how many apples do you have? You combine them, right? Addition means combining quantities.\n\nNow, look at your `add` function. What's it *actually* doing? Try to trace what happens when you call `add(x, y)`. Does it do what you expect it to do when you want to add two numbers?\n\nDon't worry about fixing it just yet. Just focus on understanding what the function is supposed to do and what it's currently doing. Sometimes, just identifying the difference is the biggest step!",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "code_word_bypass",
+   "iteration": 0,
+   "message": "why does my code print the wrong sum?",
+   "text": "Okay, let's take a look! It's great that you're already identifying issues and asking questions. That's a key skill in programming.\n\nYou've noticed that your code is printing the wrong sum. Let's examine the `add` function:\n\n```python\ndef add(a, b):\n    return a - b\n```\n\nWhat do you think the `-` operator does? Think about what happens when you use it with regular numbers, like `2 - 1`.\n\nThe `add` function is currently *subtracting* `b` from `a` instead of *adding* them. That's why you're seeing the wrong result.\n\nTo help you understand further, let's consider a general example. Imagine you're trying to calculate the total number of apples you have. You have 5 apples in one basket and 3 apples in another. To find the total, you *add* the number of apples in each basket (5 + 3 = 8).\n\nYour `add` function is doing the opposite – it's taking apples *away* from one basket!\n\nIf you're unsure how to fix it, feel free to press the Hint button for a more detailed explanation.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "how_fix_operator",
+   "iteration": 1,
+   "message": "how should I fix my add function?",
+   "text": "You've asked a great question! It's fantastic that you're already thinking about how to improve your code.\n\nThe `add` function currently returns the result of subtracting `b` from `a`. To correctly add two numbers, you need to perform the opposite operation: adding `b` to `a`.\n\nThink about it this way: addition means combining two quantities. For example, if you have 2 apples and I give you 3 more, you now have 5 apples (2 + 3 = 5).\n\nThe `add` function should reflect this combination.\n\nIf you're unsure how to do this, pressing the Hint button will give you more specific guidance on the lines of code involved. Let me know if you have any other questions!",
+   "no_fix": false,
+   "within_hints": false
+  },
+  {
+   "case": "how_fix_typo_wordcode",
+   "iteration": 1,
+   "message": "how do I fix the error in my code?",
+   "text": "Okay, you're trying to compute the area of a rectangle! That's a great project to start with. You've already got the basic structure in place, which is excellent.\n\nIt looks like you've run into an error. Let's tackle it together. The error message you're seeing is likely due to a small typo.\n\nBefore we jump into fixing it, let's talk a little about how to approach debugging. Errors are a *normal* part of programming! They mean you're pushing the boundaries of what the computer understands. The key is to learn how to read the error messages and use them to guide you.\n\nSince you're encountering an error, I encourage you to press the \"Hint\" button. It will give you a little more information to help you pinpoint the problem. Let's get that fixed, and then we can talk about making your code even more robust!",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "never_stops",
+   "iteration": 1,
+   "message": "my program never stops, what should I do?",
+   "text": "Okay, that's a common issue when you're starting with loops! It means your loop's condition isn't being met, so it's running forever.\n\nLet's think about how `while` loops work in general. A `while` loop keeps running as long as a certain condition is `True`. Inside the loop, you usually do something that *eventually* makes that condition `False`, so the loop can stop.\n\nIn your code, the `while` loop continues as long as `count < 5`.  Inside the loop, you print the value of `count`, but you never change the value of `count` itself.  So, `count` always stays at its starting value (0), and the condition `count < 5` is *always* `True`.\n\nTo fix this, you need to make sure that something inside the loop changes `count` in a way that will eventually make `count < 5` become `False`.\n\nPress the Hint button if you'd like a little nudge in the right direction.",
+   "no_fix": false,
+   "within_hints": false
+  },
+  {
+   "case": "whats_wrong_boundary",
+   "iteration": 1,
+   "message": "what is wrong with my can_vote function?",
+   "text": "Your `can_vote` function looks great! It does exactly what it's supposed to do – it checks if a given age is greater than 18 and returns `True` if it is, and `False` otherwise.\n\nThe function itself is perfectly fine. The issue likely lies elsewhere in your code. Could you describe what's happening when you run the program? What output do you expect, and what are you actually seeing? Also, have you pressed the Hint button? It might offer some insights into the problem.",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "line_request",
+   "iteration": 1,
+   "message": "what should I change on line 16?",
+   "text": "Okay, let's take a look at line 16: `if guess < secret:`\n\nYou've started building a good foundation for your guessing game! Right now, the game tells you \"Too high!\" if your guess is less than the secret number. That's probably not what you want. \n\nRemember, the `if`, `elif`, and `else` statements form a chain of checks. They're evaluated in order, and the *first* one that's true gets executed. If none are true, the `else` block runs.\n\nTo help you think through this, imagine you're trying to decide whether to wear a jacket.\n\n*   `if it's raining:` You put on a jacket.\n*   `elif it's snowing:` You put on a *really* warm coat.\n*   `else:` You don't wear a jacket.\n\nThe order matters! If you put \"elif it's raining\" *after* \"elif it's snowing,\" you'd put on the warm coat even if it was just a light rain.\n\nThink about how you want the \"Too high!\" and \"Too low!\" messages to work, and what condition should trigger each one. Press the Hint button if you'd like a little more guidance.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "explain_hint1",
+   "iteration": 1,
+   "message": "I don't understand the hint, can you explain it?",
+   "text": "Okay, let's break down that hint. It's pointing you towards the `add` function. The hint says to \"consider what operation it should perform.\"\n\nThink about what the word \"add\" means in everyday language. When you add two numbers, what do you do? Do you take one away from the other? No, you combine them to get a larger number.\n\nThe `add` function, as it's currently written, is performing a subtraction instead of an addition. The hint is encouraging you to revisit that function and make sure it's doing what the name suggests it should be doing.\n\nDoes that make a bit more sense now? Don't worry about fixing the code just yet – just focus on understanding the *purpose* of the `add` function.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "code_word_bypass",
+   "iteration": 1,
+   "message": "why does my code print the wrong sum?",
+   "text": "You've noticed a problem, and that's fantastic! Debugging is a huge part of programming. Let's figure out why your sum is incorrect.\n\nLooking at your code, the `add` function currently looks like this:\n\n```python\ndef add(a, b):\n    return a - b\n```\n\nCan you spot what's happening there? It's performing subtraction instead of addition! \n\nThe `add` function is supposed to *add* two numbers, meaning it should combine them to find their total.  Think about what the `+` operator does: 2 + 3 equals 5.\n\nPress the Hint button if you'd like a little more guidance on where to look.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "how_fix_operator",
+   "iteration": 2,
+   "message": "how should I fix my add function?",
+   "text": "You've asked a great question! It's awesome that you're already thinking about how to improve your code.\n\nInstead of telling you the fix directly, let's talk about what the `add` function is supposed to do. What operation does \"addition\" mean? Think about what happens when you combine two numbers using addition. For example, what is 2 + 3?\n\nThe `add` function currently uses the subtraction operator (`-`).  Think about how you could change that one character to make the function perform addition instead.\n\nIf you're still stuck, feel free to press the Hint button, and I'll give you a little more guidance. I'm here to help you understand *why* things work, not just give you the answer.",
+   "no_fix": false,
+   "within_hints": false
+  },
+  {
+   "case": "how_fix_typo_wordcode",
+   "iteration": 2,
+   "message": "how do I fix the error in my code?",
+   "text": "You've run into a problem! It's great that you're trying to solve it yourself. Errors are really valuable learning opportunities.\n\nBefore we dive into fixing it, let's talk about how to approach errors in general. When you see an error message, don't panic! Read it carefully. It often tells you:\n\n1.  **The type of error:**  Is it a `NameError`, `TypeError`, `SyntaxError`, etc.? This gives you a clue about what kind of problem occurred.\n2.  **The line number:** This tells you approximately where the error happened.\n3.  **A description:** This gives you a little more detail about what went wrong.\n\nIn this case, you've pressed the Hint button. Let's look at the first hint about the concept.\n\n**Hint 1: Typos**\n\nTypos are a very common cause of errors, especially when you're learning. A single incorrect character can prevent your code from running correctly. Double-check your variable names and function calls to make sure you've spelled everything exactly right.\n\nGo back and carefully examine the line where the error is occurring. Does the variable or function name look right? Does it match what you intended to write?\n\nWhy do you think typos are so common?",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "never_stops",
+   "iteration": 2,
+   "message": "my program never stops, what should I do?",
+   "text": "Okay, that's a common problem when you're learning loops! It means your loop isn't stopping when you expect it to. \n\nThink of a loop like a set of instructions you want to repeat. For the loop to stop, something *inside* the loop has to change in a way that makes the condition to continue the loop become false.\n\nIn your case, you're using a `while` loop, which continues as long as a certain condition is true. Let's think about what that condition is in your program. What variable is being checked in the `while` statement, and how does that variable change inside the loop? If that variable *never* changes, the condition will always be true, and the loop will run forever!\n\nPress the Hint button if you'd like me to help you pinpoint what's happening in your code.",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "whats_wrong_boundary",
+   "iteration": 2,
+   "message": "what is wrong with my can_vote function?",
+   "text": "Your `can_vote` function itself is perfectly correct! It does exactly what the project description asks for: it checks if a given age is greater than 18 and returns `True` if it is, and `False` otherwise.\n\nThe project description asks us to get the user's age and then tell them if they can vote. Your code already does that!\n\nIs there something specific that isn't working as you expect? Perhaps you're getting an unexpected result when you run the program? Or maybe you're wondering about a different aspect of the code?\n\nLet's focus on the overall project goal and how all the parts fit together. You've defined a function to determine voting eligibility, and you're using it to decide what message to print to the user. That's great!\n\nIf you're unsure about any part of the process, feel free to ask more questions. Or, if you suspect there's a problem with how the function is being used, pressing the Hint button might help you pinpoint the issue.",
+   "no_fix": true,
+   "within_hints": true
+  },
+  {
+   "case": "line_request",
+   "iteration": 2,
+   "message": "what should I change on line 16?",
+   "text": "Okay, let's take a look at line 16: `if guess < secret:`.\n\nYou've started off really well! The logic here is on the right track. You're comparing the player's guess to the secret number.\n\nHowever, the messages \"Too high!\" and \"Too low!\" are currently reversed. Think about what happens when the guess is less than the secret number – is it too high or too low?\n\nPress the Hint button if you'd like a little more direction.",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "explain_hint1",
+   "iteration": 2,
+   "message": "I don't understand the hint, can you explain it?",
+   "text": "Okay, let's break down that hint. The hint says \"Consider what the `add` function is supposed to do.\"\n\nThink about what it means to \"add\" two numbers together. What operation are you performing? What's the expected result when you add, say, 2 and 3?\n\nThe `add` function currently has this line: `return a - b`. This line is *subtracting* `b` from `a`, not adding them. So, the function isn't doing what its name suggests it should be doing.\n\nThe hint is just prompting you to think about the intended purpose of the `add` function and compare that to what the code is actually doing. Does the code match the intention?",
+   "no_fix": true,
+   "within_hints": false
+  },
+  {
+   "case": "code_word_bypass",
+   "iteration": 2,
+   "message": "why does my code print the wrong sum?",
+   "text": "You've noticed a problem, which is fantastic! That means you're paying close attention to what your code is doing. Let's figure out why the sum is incorrect.\n\nLooking at your `add` function, you've defined it as `def add(a, b): return a - b`.  This function *subtracts* `b` from `a`, rather than *adding* them together.\n\nThink about what a function is supposed to do. It's a reusable block of code that performs a specific task. If you want to add two numbers, the function should contain the code that does that addition.\n\nTo help you correct this, press the Hint button. It will give you a bit more information to get you started.",
+   "no_fix": true,
+   "within_hints": false
+  }
+ ],
+ "leak": {
+  "replies": [
+   {
+    "reply": "```python\nreturn a + b\n```",
+    "student_code": "return a - b",
+    "is_leak": true,
+    "chat_flags": true,
+    "hint_flags": true
+   },
+   {
+    "reply": "Change line 2 to:\n    return a + b",
+    "student_code": "return a - b",
+    "is_leak": true,
+    "chat_flags": true,
+    "hint_flags": true
+   },
+   {
+    "reply": "You can write `return a + b` instead.",
+    "student_code": "return a - b",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": true
+   },
+   {
+    "reply": "Use `count += 1` inside the loop.",
+    "student_code": "while count < 5:",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": true
+   },
+   {
+    "reply": "Try `range(1, n + 1)`.",
+    "student_code": "for i in range(1, n):",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": true
+   },
+   {
+    "reply": "Replace it with total = a + b",
+    "student_code": "total = a - b",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "for i in range(1, n + 1):\n    print(i)",
+    "student_code": "for i in range(1, n):",
+    "is_leak": true,
+    "chat_flags": true,
+    "hint_flags": true
+   },
+   {
+    "reply": "if age >= 18:\n    print('ok')",
+    "student_code": "if age > 18:",
+    "is_leak": true,
+    "chat_flags": true,
+    "hint_flags": true
+   },
+   {
+    "reply": "The fix: result = total / len(numbers), then return result.",
+    "student_code": "result = total / len(numbers)",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Just add return result at the end of the function.",
+    "student_code": "result = total / len(numbers)",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Wrap it like int(input()) so it becomes a number.",
+    "student_code": "age = input()",
+    "is_leak": true,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Take another look at your add function.",
+    "student_code": "return a - b",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Check line 2, `return a - b`.",
+    "student_code": "return a - b",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Python's `input()` function always gives you text.",
+    "student_code": "",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": true
+   },
+   {
+    "reply": "Think about what `range` does with its stop value.",
+    "student_code": "for i in range(1, n):",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "The `+` operator adds two numbers together.",
+    "student_code": "return a - b",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": true
+   },
+   {
+    "reply": "return values let a function give back a result.",
+    "student_code": "",
+    "is_leak": false,
+    "chat_flags": true,
+    "hint_flags": true
+   },
+   {
+    "reply": "Functions can return a value to the code that called them.",
+    "student_code": "",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "Look at the loop condition and ask yourself when it becomes false.",
+    "student_code": "while count < 5:",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": false
+   },
+   {
+    "reply": "In Python, `==` compares two values.",
+    "student_code": "",
+    "is_leak": false,
+    "chat_flags": false,
+    "hint_flags": true
+   }
+  ],
+  "chat": {
+   "precision": 0.8,
+   "recall": 0.36,
+   "accuracy": 0.6
+  },
+  "hints": {
+   "precision": 0.64,
+   "recall": 0.64,
+   "accuracy": 0.6
+  }
+ },
+ "report_table": [
+  {
+   "category": "Withholding solutions",
+   "measure": "Hint ladders with no fix in hints 1-3",
+   "result": "27/27 (100%)"
+  },
+  {
+   "category": "Withholding solutions",
+   "measure": "Tutor answers that do not give the fix",
+   "result": "17/21 (81%)"
+  },
+  {
+   "category": "Withholding solutions",
+   "measure": "Tutor answers that reveal no more than the hints so far",
+   "result": "8/21 (38%)"
+  },
+  {
+   "category": "Withholding solutions",
+   "measure": "Code-leak check (chat): precision / recall / accuracy",
+   "result": "0.80 / 0.36 / 0.60"
+  },
+  {
+   "category": "Withholding solutions",
+   "measure": "Code-leak check (hints): precision / recall / accuracy",
+   "result": "0.64 / 0.64 / 0.60"
+  },
+  {
+   "category": "Hint quality",
+   "measure": "Hint 2 points at the bug (surface / semantic bugs)",
+   "result": "9/9 (100%) / 6/15 (40%)"
+  },
+  {
+   "category": "Hint quality",
+   "measure": "Hint 4 gives a correct fix (surface / semantic bugs)",
+   "result": "9/9 (100%) / 4/15 (27%)"
+  },
+  {
+   "category": "Hint quality",
+   "measure": "Hints replaced by the generic fallback",
+   "result": "8/108 (7%)"
+  },
+  {
+   "category": "Project scoping",
+   "measure": "Well-formed plan for a clear idea",
+   "result": "15/15 (100%)"
+  },
+  {
+   "category": "Project scoping",
+   "measure": "Change requests applied",
+   "result": "9/9 (100%)"
+  },
+  {
+   "category": "Project scoping",
+   "measure": "Vague input answered with a question",
+   "result": "0/6 (0%)"
+  }
+ ],
+ "report_examples": [
+  {
+   "example": "Example 1",
+   "case": "how_fix_typo_wordcode",
+   "iteration": 0,
+   "student": "how do I fix the error in my code?",
+   "tutor": "Okay, let's tackle that error! It's great that you're proactively trying to fix things.\n\nYou've pressed the Hint button, so let's look at what that first hint revealed. The hint focused on the `rectangle_area` function, specifically the line `return width * heigth`.\n\nThe hint is pointing to a typo! Look closely at the variable name in the `return` statement. You've used `heigth` instead of `height`. Python is very sensitive to these kinds of spelling mistakes.\n\nThink of it like this: imagine you're asking a friend for a book, but you misspell their name. They might not know who you're talking about! Similarly, Python can't find a variable called `heigth` because it doesn't exist.\n\nTry correcting that small typo, and I bet your code will run perfectly. Let me know how it goes! I'm here to help if you get stuck again."
+  },
+  {
+   "example": "Example 2",
+   "case": "boundary",
+   "iteration": 0,
+   "hints": {
+    "3": "The `can_vote` function expects a number as input, but you're not passing the value of `age` to it. Consider how to pass the user's age to the function."
+   }
+  },
+  {
+   "example": "Example 2",
+   "case": "whats_wrong_boundary",
+   "iteration": 0,
+   "student": "what is wrong with my can_vote function?",
+   "tutor": "Your `can_vote` function itself is perfectly fine! It does exactly what it's supposed to do: it checks if a given age is greater than 18 and returns `True` if it is, and `False` otherwise.\n\nThe question is more about how you're *using* the function. Let's think about what could go wrong in the rest of your program.\n\nFor example, what happens if the user enters something that's *not* a number when you ask for their age?  The `int()` function will raise an error and your program will crash.  That's a really common thing to run into when you're asking for input from a user.\n\nTo help you think through these kinds of situations, press the Hint button! It will give you a little more information about what might be going on."
+  }
+ ]
+}
