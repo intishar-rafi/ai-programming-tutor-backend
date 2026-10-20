@@ -28,28 +28,28 @@ One in-memory session store keyed by `session_id` (one per browser tab), plus a 
 
 ```mermaid
 flowchart TD
-    client["Frontend&nbsp;&nbsp;"] --> chat["POST /chat&nbsp;&nbsp;"]
-    client --> hint["POST /hint&nbsp;&nbsp;"]
-    client --> upload["POST /upload&nbsp;&nbsp;"]
-    client --> projects["GET /projects, POST /select_project&nbsp;&nbsp;"]
+    client["Frontend&nbsp;&nbsp;&nbsp;"] --> chat["POST /chat&nbsp;&nbsp;&nbsp;"]
+    client --> hint["POST /hint&nbsp;&nbsp;&nbsp;"]
+    client --> upload["POST /upload&nbsp;&nbsp;&nbsp;"]
+    client --> projects["GET /projects, POST /select_project&nbsp;&nbsp;&nbsp;"]
 
-    chat --> menu{"Project chosen?&nbsp;&nbsp;"}
-    menu -- no --> scoping["Menu and scoping<br/>scoping.py&nbsp;&nbsp;"]
-    menu -- yes --> tutor["Tutor<br/>temperature 0.7&nbsp;&nbsp;"]
+    chat --> menu{"Project chosen?&nbsp;&nbsp;&nbsp;"}
+    menu -- no --> scoping["Menu and scoping&nbsp;&nbsp;&nbsp;<br/>scoping.py&nbsp;&nbsp;&nbsp;"]
+    menu -- yes --> tutor["Tutor&nbsp;&nbsp;&nbsp;<br/>temperature 0.7&nbsp;&nbsp;&nbsp;"]
 
-    hint --> ladder["Hint bot, levels 1 to 4<br/>temperature 0.3&nbsp;&nbsp;"]
+    hint --> ladder["Hint bot&nbsp;&nbsp;&nbsp;<br/>levels 1 to 4&nbsp;&nbsp;&nbsp;<br/>temperature 0.3&nbsp;&nbsp;&nbsp;"]
 
-    upload --> state[("Session state<br/>code, history, hint level&nbsp;&nbsp;")]
-    projects --> files[("workspace folder<br/>main.py + PROJECT.md&nbsp;&nbsp;")]
+    upload --> state[("Session state&nbsp;&nbsp;&nbsp;<br/>code, history, hint level&nbsp;&nbsp;&nbsp;")]
+    projects --> files[("workspace folder&nbsp;&nbsp;&nbsp;<br/>main.py + PROJECT.md&nbsp;&nbsp;&nbsp;")]
     upload --> files
 
-    state --> context["context.py<br/>plan + code + diff&nbsp;&nbsp;"]
+    state --> context["context.py&nbsp;&nbsp;&nbsp;<br/>plan, code, diff&nbsp;&nbsp;&nbsp;"]
     context --> tutor
     context --> ladder
 
-    tutor --> check{"Code-leak check&nbsp;&nbsp;"}
+    tutor --> check{"Code-leak check&nbsp;&nbsp;&nbsp;"}
     ladder --> check
-    scoping --> llm["OpenAI API&nbsp;&nbsp;"]
+    scoping --> llm["OpenAI API&nbsp;&nbsp;&nbsp;"]
     check --> llm
 ```
 
