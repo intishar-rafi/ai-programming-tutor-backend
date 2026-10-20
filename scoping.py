@@ -122,7 +122,7 @@ def handle_menu(state: dict, text: str) -> str:
             reply = generate_chat_completion(SCOPING_SYSTEM_PROMPT, state["scoping_history"])
             state["scoping_history"].append({"role": "assistant", "content": reply})
             return format_spec(reply)
-        spec = generate_chat_completion(SPEC_SYSTEM_PROMPT, state["scoping_history"])
+        spec = generate_chat_completion(SPEC_SYSTEM_PROMPT, state["scoping_history"] + [{"role": "user", "content": text}])
         name_match = re.search(r"Name:\s*(\S+)", state["scoping_history"][-1]["content"])
         project_dir = create_project(name_match.group(1) if name_match else "my_project", spec)
         start_tutoring(state, project_dir)
