@@ -81,5 +81,20 @@ def build_context_block(state: dict, hint_pressed: bool = False) -> str:
                 + state["diff_text"]
             )
 
+    # the tutor (not the hint bot) is told which hints the student has seen. They are given here,
+    # in the system prompt, instead of as chat turns, so the tutor can't copy their format.
+    if not hint_pressed:
+        shown = [m["content"] for m in state.get("hint_history", []) if m["role"] == "assistant"]
+        if shown:
+            context_block += (
+                "\n\nHints so far for the current problem (the student saw them one at a time, most recent last):\n"
+                + "\n".join(f"Hint {i}/4: {h}" for i, h in enumerate(shown, 1))
+            )
+            if state.get("last_was_hint"):
+                context_block += (
+                    "\n\nThe student's last action was pressing the Hint button, so the most recent hint above is "
+                    "the one they are looking at now."
+                )
+
     state["last_seen_file"] = file_context
     return context_block

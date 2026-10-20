@@ -161,6 +161,7 @@ def chat(body: ChatRequest):
 
     # Saves the student's message and the tutor's answer, so the tutor remembers the conversation.
     def save_history(full_response: str):
+        state["last_was_hint"] = False
         state["history"].append({"role": "user", "content": body.message})
         state["history"].append({"role": "assistant", "content": full_response})
 
@@ -246,15 +247,10 @@ def hint(body: HintRequest):
     # an empty file gets "how to get started" hints based on the project spec
     hint_text = get_hint(context_block, level, state["hint_history"], empty_file=not file_context.strip())
 
-    # same bookkeeping as the notebook's chatbot(): the hint goes into the
-    # hint bot's history, and (with the notebook's prefix) into the tutor's
-    # conversation, so the tutor can see the hints it is told to explain
-    hint_prompt = HINT_USER_MESSAGE
-    state["hint_history"].append({"role": "user", "content": hint_prompt})
+    # The hint goes into the hint bot's own history. It is NOT added to the tutor's chat history:
+    # the tutor reads the hints from the "Hints so far" section of its context instead (see
+    # context.py), because chat turns written like hints made it imitate them.
+    state["hint_history"].append({"role": "user", "content": HINT_USER_MESSAGE})
     state["hint_history"].append({"role": "assistant", "content": hint_text})
-    state["history"].append({"role": "user", "content": hint_prompt})
-    state["history"].append({
-        "role": "assistant",
-        "content": f"I see you pressed the hint button, so here's hint {level}/4:\n\n{hint_text}",
-    })
+    state["last_was_hint"] = True
     return HintResponse(level=level, hint=hint_text)

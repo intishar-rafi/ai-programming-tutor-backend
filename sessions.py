@@ -38,6 +38,7 @@ class SessionState(TypedDict, total=False):
     diff_text: str  # persisted unified diff, re-shown when the file hasn't changed since last time
     last_hinted_file: Optional[str]
     hint_level: int
+    last_was_hint: bool  # True if the student's last action was pressing Hint (so the tutor knows)
     hint_history: list  # only the hints of the current round, seen by the hint bot (notebook's hint_history)
     history: list  # [{"role": "user"|"assistant", "content": str}, ...] — the tutor's conversation (own_history)
 
@@ -59,6 +60,7 @@ def get_session(session_id: str) -> SessionState:
         "last_hinted_file": None,
         "hint_level": 0,
         "hint_history": [],
+        "last_was_hint": False,
         "history": [],
     })
 
@@ -103,6 +105,7 @@ def start_tutoring(state: SessionState, project_dir: str) -> SessionState:
     state["last_hinted_file"] = None
     state["hint_level"] = 0
     state["hint_history"] = []
+    state["last_was_hint"] = False
     state["history"] = []
     state["phase"] = "tutoring"
     return state
@@ -124,4 +127,5 @@ def set_file(session_id: str, content: str) -> SessionState:
     state["last_hinted_file"] = None
     state["hint_level"] = 0
     state["hint_history"] = []  # file changed -> hints start over (notebook: hint_history.clear())
+    state["last_was_hint"] = False
     return state
